@@ -1,0 +1,14 @@
+{
+  "slug": "react-state-management",
+  "title": "Управление состоянием в React",
+  "description": "Стратегии управления состоянием: локальное состояние, Context API, подъём состояния и когда нужен Redux.",
+  "topicSlug": "react",
+  "date": "2026-02-06",
+  "readTime": "9 мин",
+  "tags": [
+    "React",
+    "Состояние",
+    "Context"
+  ],
+  "content": "\n## Управление состоянием\n\nПравильное управление состоянием — ключ к масштабируемому React-приложению.\n\n### Локальное состояние (useState)\n\nИспользуйте для состояния, которое нужно **только одному компоненту**:\n\n```tsx\nfunction Modal() {\n  const [isOpen, setIsOpen] = useState(false);\n  // ...\n}\n```\n\n### Подъём состояния (Lifting State Up)\n\nКогда двум компонентам нужно одно состояние — поднимите его к общему родителю:\n\n```tsx\nfunction App() {\n  const [theme, setTheme] = useState(\"light\");\n\n  return (\n    <>\n      <Header theme={theme} />\n      <Settings onThemeChange={setTheme} />\n    </>\n  );\n}\n```\n\n### Context API\n\nДля передачи данных через дерево компонентов без props drilling:\n\n```tsx\nconst ThemeContext = createContext<\"light\" | \"dark\">(\"light\");\n\nfunction ThemeProvider({ children }: { children: React.ReactNode }) {\n  const [theme, setTheme] = useState<\"light\" | \"dark\">(\"light\");\n\n  return (\n    <ThemeContext.Provider value={theme}>\n      {children}\n    </ThemeContext.Provider>\n  );\n}\n\nfunction useTheme() {\n  return useContext(ThemeContext);\n}\n```\n\n### useReducer для сложной логики\n\n```tsx\ntype Action = \n  | { type: \"increment\" }\n  | { type: \"decrement\" }\n  | { type: \"reset\" };\n\nfunction reducer(state: number, action: Action): number {\n  switch (action.type) {\n    case \"increment\": return state + 1;\n    case \"decrement\": return state - 1;\n    case \"reset\": return 0;\n  }\n}\n```\n\n### Когда что использовать?\n\n| Сценарий | Решение |\n|----------|---------|\n| UI-состояние компонента | useState |\n| Сложная логика | useReducer |\n| Глобальная тема/язык | Context |\n| Серверные данные | React Query / SWR |\n| Большое приложение | Zustand / Redux |\n\nНе используйте сложные решения, пока они не нужны — **начинайте просто**.\n    "
+}

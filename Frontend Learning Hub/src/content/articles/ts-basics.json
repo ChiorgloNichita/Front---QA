@@ -1,0 +1,14 @@
+{
+  "slug": "ts-basics",
+  "title": "Введение в TypeScript",
+  "description": "Первые шаги в TypeScript: типы, интерфейсы, аннотации и преимущества статической типизации.",
+  "topicSlug": "typescript",
+  "date": "2026-01-12",
+  "readTime": "8 мин",
+  "tags": [
+    "TypeScript",
+    "Основы",
+    "Типы"
+  ],
+  "content": "\n## Что такое TypeScript?\n\nTypeScript — это **надмножество JavaScript**, добавляющее статическую типизацию. Код TypeScript компилируется в обычный JavaScript.\n\n### Базовые типы\n\n```typescript\nlet name: string = \"Frontend Hub\";\nlet age: number = 25;\nlet isActive: boolean = true;\nlet items: string[] = [\"HTML\", \"CSS\", \"JS\"];\nlet tuple: [string, number] = [\"age\", 25];\n```\n\n### Интерфейсы\n\n```typescript\ninterface User {\n  id: number;\n  name: string;\n  email: string;\n  age?: number;         // опциональное поле\n  readonly createdAt: Date;  // только для чтения\n}\n\nconst user: User = {\n  id: 1,\n  name: \"Анна\",\n  email: \"anna@example.com\",\n  createdAt: new Date(),\n};\n```\n\n### Типы и юнионы\n\n```typescript\ntype Status = \"active\" | \"inactive\" | \"banned\";\ntype ID = string | number;\n\nfunction processId(id: ID): void {\n  if (typeof id === \"string\") {\n    console.log(id.toUpperCase());\n  } else {\n    console.log(id.toFixed(2));\n  }\n}\n```\n\n### Функции\n\n```typescript\nfunction greet(name: string): string {\n  return \\`Привет, \\${name}!\\`;\n}\n\nconst add = (a: number, b: number): number => a + b;\n\n// Функция с необязательным параметром\nfunction log(message: string, level?: string): void {\n  console.log(\\`[\\${level ?? \"info\"}] \\${message}\\`);\n}\n```\n\n### Зачем TypeScript?\n\n1. **Раннее обнаружение ошибок** — ещё до запуска кода\n2. **Автодополнение** — IDE лучше понимает код\n3. **Документация** — типы служат документацией\n4. **Рефакторинг** — безопасное изменение кода\n\nTypeScript стал стандартом в профессиональной frontend-разработке.\n    "
+}

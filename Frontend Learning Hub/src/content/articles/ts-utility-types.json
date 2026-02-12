@@ -1,0 +1,14 @@
+{
+  "slug": "ts-utility-types",
+  "title": "Утилитарные типы TypeScript",
+  "description": "Обзор встроенных утилитарных типов: Partial, Required, Pick, Omit, Record и другие.",
+  "topicSlug": "typescript",
+  "date": "2026-02-08",
+  "readTime": "6 мин",
+  "tags": [
+    "TypeScript",
+    "Utility Types",
+    "Типы"
+  ],
+  "content": "\n## Утилитарные типы\n\nTypeScript предоставляет набор встроенных типов-утилит для трансформации типов.\n\n### Partial<T> — все поля опциональные\n\n```typescript\ninterface User {\n  name: string;\n  email: string;\n  age: number;\n}\n\ntype PartialUser = Partial<User>;\n// { name?: string; email?: string; age?: number; }\n\nfunction updateUser(id: number, updates: Partial<User>) {\n  // обновляем только переданные поля\n}\n```\n\n### Required<T> — все поля обязательные\n\n```typescript\ntype RequiredUser = Required<PartialUser>;\n// { name: string; email: string; age: number; }\n```\n\n### Pick<T, K> — выбрать поля\n\n```typescript\ntype UserPreview = Pick<User, \"name\" | \"email\">;\n// { name: string; email: string; }\n```\n\n### Omit<T, K> — исключить поля\n\n```typescript\ntype UserWithoutAge = Omit<User, \"age\">;\n// { name: string; email: string; }\n```\n\n### Record<K, V> — объект с заданными ключами и значениями\n\n```typescript\ntype UserRoles = Record<string, \"admin\" | \"user\" | \"moderator\">;\n\nconst roles: UserRoles = {\n  anna: \"admin\",\n  boris: \"user\",\n};\n```\n\n### Exclude и Extract\n\n```typescript\ntype Status = \"active\" | \"inactive\" | \"banned\";\ntype ActiveStatus = Exclude<Status, \"banned\">;  // \"active\" | \"inactive\"\ntype DangerStatus = Extract<Status, \"banned\">;   // \"banned\"\n```\n\n### ReturnType<T>\n\n```typescript\nfunction createUser() {\n  return { id: 1, name: \"Test\" };\n}\n\ntype UserType = ReturnType<typeof createUser>;\n// { id: number; name: string; }\n```\n\nУтилитарные типы экономят время и делают код более выразительным.\n    "
+}

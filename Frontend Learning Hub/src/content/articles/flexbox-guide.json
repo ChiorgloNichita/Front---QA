@@ -1,0 +1,14 @@
+{
+  "slug": "flexbox-guide",
+  "title": "Полное руководство по Flexbox",
+  "description": "Освойте Flexbox для создания гибких и адаптивных макетов. Все свойства, оси и практические примеры.",
+  "topicSlug": "html-css",
+  "date": "2026-01-20",
+  "readTime": "8 мин",
+  "tags": [
+    "CSS",
+    "Flexbox",
+    "Вёрстка"
+  ],
+  "content": "\n## Flexbox — модель гибкого макета\n\nFlexbox (Flexible Box Layout) — это одномерная модель CSS-макета, которая позволяет эффективно распределять пространство между элементами.\n\n### Основные концепции\n\nFlexbox работает по **двум осям**:\n- **Главная ось** (main axis) — направление расположения элементов\n- **Поперечная ось** (cross axis) — перпендикулярна главной\n\n### Свойства контейнера\n\n```css\n.container {\n  display: flex;\n  flex-direction: row;       /* row | column | row-reverse | column-reverse */\n  justify-content: center;   /* flex-start | center | space-between | space-around */\n  align-items: center;       /* flex-start | center | stretch | baseline */\n  flex-wrap: wrap;           /* nowrap | wrap | wrap-reverse */\n  gap: 16px;                 /* промежуток между элементами */\n}\n```\n\n### Свойства элементов\n\n```css\n.item {\n  flex-grow: 1;    /* как элемент растёт */\n  flex-shrink: 0;  /* как элемент сжимается */\n  flex-basis: 200px; /* начальный размер */\n  align-self: flex-end; /* выравнивание конкретного элемента */\n  order: 2;        /* порядок элемента */\n}\n```\n\n### Практический пример: карточки\n\n```css\n.cards {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 1rem;\n}\n\n.card {\n  flex: 1 1 300px;\n  padding: 1.5rem;\n  border: 1px solid #ddd;\n  border-radius: 8px;\n}\n```\n\n### Полезные паттерны\n\n- **Центрирование**: `display: flex; justify-content: center; align-items: center;`\n- **Навигация**: `display: flex; justify-content: space-between;`\n- **Равные колонки**: `display: flex; > * { flex: 1; }`\n\nFlexbox — незаменимый инструмент в арсенале каждого frontend-разработчика.\n    "
+}

@@ -1,0 +1,14 @@
+{
+  "slug": "eslint-prettier",
+  "title": "ESLint и Prettier: чистый код автоматически",
+  "description": "Настройка ESLint для анализа кода и Prettier для форматирования. Автоматизация качества кода.",
+  "topicSlug": "tooling",
+  "date": "2026-01-30",
+  "readTime": "6 мин",
+  "tags": [
+    "ESLint",
+    "Prettier",
+    "Линтинг"
+  ],
+  "content": "\n## ESLint + Prettier\n\nESLint находит проблемы в коде, Prettier форматирует его. Вместе они обеспечивают единый стиль кода.\n\n### Установка ESLint\n\n```bash\nnpm init @eslint/config@latest\n```\n\n### Конфигурация ESLint\n\n```javascript\n// eslint.config.js\nimport js from \"@eslint/js\";\nimport tseslint from \"typescript-eslint\";\n\nexport default [\n  js.configs.recommended,\n  ...tseslint.configs.recommended,\n  {\n    rules: {\n      \"no-unused-vars\": \"warn\",\n      \"no-console\": \"warn\",\n      \"@typescript-eslint/no-explicit-any\": \"error\",\n    },\n  },\n];\n```\n\n### Установка Prettier\n\n```bash\nnpm install -D prettier eslint-config-prettier\n```\n\n### Конфигурация Prettier\n\n```json\n// .prettierrc\n{\n  \"semi\": true,\n  \"singleQuote\": false,\n  \"tabWidth\": 2,\n  \"trailingComma\": \"all\",\n  \"printWidth\": 80,\n  \"arrowParens\": \"avoid\"\n}\n```\n\n### Скрипты в package.json\n\n```json\n{\n  \"scripts\": {\n    \"lint\": \"eslint src/\",\n    \"lint:fix\": \"eslint src/ --fix\",\n    \"format\": \"prettier --write src/\"\n  }\n}\n```\n\n### VS Code настройки\n\n```json\n// .vscode/settings.json\n{\n  \"editor.formatOnSave\": true,\n  \"editor.defaultFormatter\": \"esbenp.prettier-vscode\",\n  \"editor.codeActionsOnSave\": {\n    \"source.fixAll.eslint\": \"explicit\"\n  }\n}\n```\n\nАвтоматизированные линтинг и форматирование экономят время и предотвращают споры о стиле кода.\n    "
+}

@@ -1,0 +1,14 @@
+{
+  "slug": "ts-generics",
+  "title": "Дженерики в TypeScript",
+  "description": "Понимание дженериков: параметрические типы, ограничения и практические сценарии использования.",
+  "topicSlug": "typescript",
+  "date": "2026-02-03",
+  "readTime": "9 мин",
+  "tags": [
+    "TypeScript",
+    "Дженерики",
+    "Продвинутое"
+  ],
+  "content": "\n## Дженерики (Generics)\n\nДженерики позволяют создавать **переиспользуемые компоненты**, которые работают с разными типами данных.\n\n### Базовый синтаксис\n\n```typescript\nfunction identity<T>(value: T): T {\n  return value;\n}\n\nconst str = identity<string>(\"hello\");  // string\nconst num = identity(42);               // number (вывод типа)\n```\n\n### Дженерик-интерфейсы\n\n```typescript\ninterface ApiResponse<T> {\n  data: T;\n  status: number;\n  message: string;\n}\n\ninterface User {\n  id: number;\n  name: string;\n}\n\nconst response: ApiResponse<User> = {\n  data: { id: 1, name: \"Анна\" },\n  status: 200,\n  message: \"OK\",\n};\n```\n\n### Ограничения (Constraints)\n\n```typescript\ninterface HasLength {\n  length: number;\n}\n\nfunction logLength<T extends HasLength>(item: T): void {\n  console.log(item.length);\n}\n\nlogLength(\"hello\");    // OK — строка имеет length\nlogLength([1, 2, 3]);  // OK — массив имеет length\n// logLength(42);      // Ошибка — число не имеет length\n```\n\n### keyof и индексные типы\n\n```typescript\nfunction getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {\n  return obj[key];\n}\n\nconst user = { name: \"Борис\", age: 30 };\nconst name = getProperty(user, \"name\"); // string\nconst age = getProperty(user, \"age\");   // number\n```\n\n### Дженерики в React-компонентах\n\n```typescript\ninterface ListProps<T> {\n  items: T[];\n  renderItem: (item: T) => React.ReactNode;\n}\n\nfunction List<T>({ items, renderItem }: ListProps<T>) {\n  return <ul>{items.map(renderItem)}</ul>;\n}\n```\n\nДженерики — мощный инструмент для создания гибкого и типобезопасного кода.\n    "
+}

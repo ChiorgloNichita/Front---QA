@@ -1,0 +1,14 @@
+{
+  "slug": "git-basics",
+  "title": "Git для frontend-разработчика",
+  "description": "Основные команды Git, ветвление, merge и лучшие практики для работы с кодом в команде.",
+  "topicSlug": "tooling",
+  "date": "2026-01-16",
+  "readTime": "8 мин",
+  "tags": [
+    "Git",
+    "Версионирование",
+    "Инструменты"
+  ],
+  "content": "\n## Git — система контроля версий\n\nGit позволяет отслеживать изменения в коде, работать в команде и безопасно экспериментировать.\n\n### Основные команды\n\n```bash\n# Инициализация\ngit init\ngit clone https://github.com/user/repo.git\n\n# Ежедневная работа\ngit status              # проверить состояние\ngit add .              # добавить все изменения\ngit commit -m \"feat: add header component\"\ngit push origin main   # отправить на удалённый репо\n\n# История\ngit log --oneline\ngit diff\n```\n\n### Ветвление\n\n```bash\ngit branch feature/header     # создать ветку\ngit checkout feature/header   # переключиться\ngit checkout -b feature/footer # создать и переключиться\n\ngit merge feature/header      # слить ветку\ngit branch -d feature/header  # удалить ветку\n```\n\n### Conventional Commits\n\n```\nfeat: добавить компонент Header\nfix: исправить отступы в Footer\ndocs: обновить README\nstyle: форматирование кода\nrefactor: переработать логику поиска\nchore: обновить зависимости\n```\n\n### .gitignore\n\n```\nnode_modules/\n.next/\n.env.local\n*.log\ndist/\n```\n\n### Полезные команды\n\n```bash\ngit stash              # спрятать изменения\ngit stash pop          # достать из заначки\ngit reset --soft HEAD~1 # отменить последний коммит\ngit rebase -i HEAD~3   # интерактивный rebase\n```\n\nGit — обязательный инструмент для каждого разработчика. Изучите его основательно.\n    "
+}

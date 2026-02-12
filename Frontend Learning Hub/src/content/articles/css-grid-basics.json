@@ -1,0 +1,14 @@
+{
+  "slug": "css-grid-basics",
+  "title": "CSS Grid: основы сеточных макетов",
+  "description": "Изучите CSS Grid для создания сложных двумерных макетов. Строки, колонки, области и практические примеры.",
+  "topicSlug": "html-css",
+  "date": "2026-02-01",
+  "readTime": "7 мин",
+  "tags": [
+    "CSS",
+    "Grid",
+    "Вёрстка"
+  ],
+  "content": "\n## CSS Grid Layout\n\nCSS Grid — это **двумерная** система макета, позволяющая работать одновременно со строками и столбцами.\n\n### Создание сетки\n\n```css\n.grid {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-template-rows: auto;\n  gap: 20px;\n}\n```\n\n### Именованные области\n\n```css\n.layout {\n  display: grid;\n  grid-template-areas:\n    \"header header header\"\n    \"sidebar main main\"\n    \"footer footer footer\";\n  grid-template-columns: 250px 1fr 1fr;\n  grid-template-rows: auto 1fr auto;\n  min-height: 100vh;\n}\n\n.header  { grid-area: header; }\n.sidebar { grid-area: sidebar; }\n.main    { grid-area: main; }\n.footer  { grid-area: footer; }\n```\n\n### Адаптивная сетка без медиазапросов\n\n```css\n.auto-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n  gap: 1.5rem;\n}\n```\n\n### Когда использовать Grid vs Flexbox?\n\n| Grid | Flexbox |\n|------|---------|\n| Двумерные макеты | Одномерные макеты |\n| Страничные макеты | Компоненты |\n| Сложные сетки | Гибкое выравнивание |\n\nGrid и Flexbox отлично дополняют друг друга — используйте оба в своих проектах!\n    "
+}

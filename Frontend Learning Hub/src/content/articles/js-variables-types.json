@@ -1,0 +1,14 @@
+{
+  "slug": "js-variables-types",
+  "title": "Переменные и типы данных в JavaScript",
+  "description": "Разбираемся с let, const, var, примитивами и объектами в JavaScript. Основы, которые должен знать каждый разработчик.",
+  "topicSlug": "javascript",
+  "date": "2026-01-10",
+  "readTime": "6 мин",
+  "tags": [
+    "JavaScript",
+    "Основы",
+    "Переменные"
+  ],
+  "content": "\n## Переменные в JavaScript\n\nВ JavaScript есть три способа объявления переменных:\n\n### let, const и var\n\n```javascript\nvar oldWay = \"устаревший способ\";  // функциональная область видимости\nlet modern = \"современный способ\";  // блочная область видимости\nconst constant = \"неизменяемая\";    // блочная область, нельзя переназначить\n```\n\n**Рекомендация:** используйте `const` по умолчанию, `let` — когда значение будет меняться, `var` — никогда.\n\n### Типы данных\n\nJavaScript имеет **8 типов данных**:\n\n**Примитивы:**\n- `string` — строки: `\"Hello\"`, `'World'`, `\\`Template\\``\n- `number` — числа: `42`, `3.14`, `NaN`, `Infinity`\n- `bigint` — большие числа: `9007199254740991n`\n- `boolean` — логические: `true`, `false`\n- `undefined` — не присвоено значение\n- `null` — пустое значение (намеренно)\n- `symbol` — уникальный идентификатор\n\n**Объекты:**\n- `object` — объекты, массивы, функции и т.д.\n\n### Проверка типов\n\n```javascript\ntypeof \"hello\"     // \"string\"\ntypeof 42          // \"number\"\ntypeof true        // \"boolean\"\ntypeof undefined   // \"undefined\"\ntypeof null        // \"object\"  ← историческая ошибка!\ntypeof {}          // \"object\"\ntypeof []          // \"object\"  ← массив тоже объект\nArray.isArray([])  // true\n```\n\n### Преобразование типов\n\n```javascript\nString(42)         // \"42\"\nNumber(\"42\")       // 42\nBoolean(\"\")        // false\nBoolean(\"hello\")   // true\n```\n\nПонимание типов — фундамент JavaScript-разработки.\n    "
+}

@@ -1,0 +1,14 @@
+{
+  "slug": "nextjs-server-components",
+  "title": "Server Components в Next.js",
+  "description": "Понимание серверных компонентов: когда использовать Server vs Client Components, принципы и паттерны.",
+  "topicSlug": "nextjs",
+  "date": "2026-02-02",
+  "readTime": "8 мин",
+  "tags": [
+    "Next.js",
+    "Server Components",
+    "React"
+  ],
+  "content": "\n## Server Components\n\nServer Components — компоненты, которые рендерятся **на сервере** и не отправляют JavaScript клиенту.\n\n### Server vs Client Components\n\n| Server Components | Client Components |\n|-------------------|-------------------|\n| По умолчанию в App Router | Нужна директива \"use client\" |\n| Доступ к БД, файлам | Интерактивность (onClick и т.д.) |\n| Не отправляют JS | Хуки (useState, useEffect) |\n| Быстрее загрузка | Браузерные API |\n\n### Server Component\n\n```tsx\n// app/articles/page.tsx (Server Component по умолчанию)\nasync function ArticlesPage() {\n  const articles = await getArticles(); // прямой доступ к данным\n\n  return (\n    <div>\n      {articles.map(article => (\n        <ArticleCard key={article.slug} article={article} />\n      ))}\n    </div>\n  );\n}\n```\n\n### Client Component\n\n```tsx\n// components/LikeButton.tsx\n\"use client\";\n\nimport { useState } from \"react\";\n\nexport function LikeButton() {\n  const [likes, setLikes] = useState(0);\n\n  return (\n    <button onClick={() => setLikes(l => l + 1)}>\n      ❤ {likes}\n    </button>\n  );\n}\n```\n\n### Паттерн композиции\n\n```tsx\n// Server Component\nimport { LikeButton } from \"./LikeButton\"; // Client\n\nexport default async function Article({ id }: { id: string }) {\n  const article = await getArticle(id);\n\n  return (\n    <article>\n      <h1>{article.title}</h1>\n      <p>{article.content}</p>\n      <LikeButton /> {/* Client Component внутри Server */}\n    </article>\n  );\n}\n```\n\n### Правила\n\n1. Server Components **не могут** использовать хуки и обработчики событий\n2. Client Components **не могут** быть async\n3. Server Components **могут** импортировать Client Components\n4. Client Components **не могут** импортировать Server Components (но могут принимать через children)\n\nПравильное разделение Server/Client компонентов — ключ к производительности Next.js приложений.\n    "
+}

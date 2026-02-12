@@ -1,0 +1,14 @@
+{
+  "slug": "react-components",
+  "title": "Компоненты React: функциональный подход",
+  "description": "Создание компонентов в React: JSX, пропсы, композиция и паттерны. Всё, что нужно для старта.",
+  "topicSlug": "react",
+  "date": "2026-01-18",
+  "readTime": "8 мин",
+  "tags": [
+    "React",
+    "Компоненты",
+    "JSX"
+  ],
+  "content": "\n## Компоненты в React\n\nКомпоненты — это **строительные блоки** любого React-приложения. Каждый компонент — это функция, возвращающая JSX.\n\n### Создание компонента\n\n```tsx\nfunction Greeting({ name }: { name: string }) {\n  return <h1>Привет, {name}!</h1>;\n}\n\n// Использование\n<Greeting name=\"Мир\" />\n```\n\n### Props с TypeScript\n\n```tsx\ninterface ButtonProps {\n  label: string;\n  variant?: \"primary\" | \"secondary\";\n  onClick: () => void;\n  disabled?: boolean;\n}\n\nfunction Button({ label, variant = \"primary\", onClick, disabled }: ButtonProps) {\n  return (\n    <button\n      className={\\`btn btn-\\${variant}\\`}\n      onClick={onClick}\n      disabled={disabled}\n    >\n      {label}\n    </button>\n  );\n}\n```\n\n### Children\n\n```tsx\ninterface CardProps {\n  title: string;\n  children: React.ReactNode;\n}\n\nfunction Card({ title, children }: CardProps) {\n  return (\n    <div className=\"card\">\n      <h2>{title}</h2>\n      <div>{children}</div>\n    </div>\n  );\n}\n\n<Card title=\"Заголовок\">\n  <p>Содержимое карточки</p>\n</Card>\n```\n\n### Условный рендеринг\n\n```tsx\nfunction Status({ isOnline }: { isOnline: boolean }) {\n  return (\n    <span>\n      {isOnline ? \"🟢 Онлайн\" : \"🔴 Оффлайн\"}\n    </span>\n  );\n}\n```\n\n### Списки\n\n```tsx\nfunction UserList({ users }: { users: User[] }) {\n  return (\n    <ul>\n      {users.map(user => (\n        <li key={user.id}>{user.name}</li>\n      ))}\n    </ul>\n  );\n}\n```\n\nКомпоненты должны быть **маленькими**, **переиспользуемыми** и **отвечать за одну задачу**.\n    "
+}

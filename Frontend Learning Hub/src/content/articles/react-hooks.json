@@ -1,0 +1,15 @@
+{
+  "slug": "react-hooks",
+  "title": "Хуки React: useState, useEffect и другие",
+  "description": "Полный обзор основных хуков React. Управление состоянием, побочные эффекты и создание кастомных хуков.",
+  "topicSlug": "react",
+  "date": "2026-01-28",
+  "readTime": "10 мин",
+  "tags": [
+    "React",
+    "Хуки",
+    "useState",
+    "useEffect"
+  ],
+  "content": "\n## React Hooks\n\nХуки — это функции, которые позволяют использовать состояние и другие возможности React в функциональных компонентах.\n\n### useState\n\n```tsx\nimport { useState } from \"react\";\n\nfunction Counter() {\n  const [count, setCount] = useState(0);\n\n  return (\n    <div>\n      <p>Счёт: {count}</p>\n      <button onClick={() => setCount(count + 1)}>+1</button>\n      <button onClick={() => setCount(prev => prev - 1)}>-1</button>\n    </div>\n  );\n}\n```\n\n### useEffect\n\n```tsx\nimport { useState, useEffect } from \"react\";\n\nfunction UserProfile({ userId }: { userId: number }) {\n  const [user, setUser] = useState(null);\n\n  useEffect(() => {\n    fetch(\\`/api/users/\\${userId}\\`)\n      .then(res => res.json())\n      .then(setUser);\n  }, [userId]); // запускается при изменении userId\n\n  if (!user) return <p>Загрузка...</p>;\n  return <h1>{user.name}</h1>;\n}\n```\n\n### useMemo и useCallback\n\n```tsx\nconst expensiveValue = useMemo(() => {\n  return computeExpensiveValue(items);\n}, [items]);\n\nconst handleClick = useCallback(() => {\n  doSomething(id);\n}, [id]);\n```\n\n### useRef\n\n```tsx\nfunction TextInput() {\n  const inputRef = useRef<HTMLInputElement>(null);\n\n  const focus = () => inputRef.current?.focus();\n\n  return (\n    <>\n      <input ref={inputRef} />\n      <button onClick={focus}>Фокус</button>\n    </>\n  );\n}\n```\n\n### Кастомный хук\n\n```tsx\nfunction useLocalStorage<T>(key: string, initial: T) {\n  const [value, setValue] = useState<T>(() => {\n    const stored = localStorage.getItem(key);\n    return stored ? JSON.parse(stored) : initial;\n  });\n\n  useEffect(() => {\n    localStorage.setItem(key, JSON.stringify(value));\n  }, [key, value]);\n\n  return [value, setValue] as const;\n}\n```\n\nХуки сделали функциональные компоненты полноценной заменой классовым.\n    "
+}

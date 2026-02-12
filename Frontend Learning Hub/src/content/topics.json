@@ -1,0 +1,51 @@
+[
+  {
+    "slug": "html-css",
+    "title": "HTML & CSS",
+    "description": "Основы веб-разметки и стилизации. Семантический HTML, Flexbox, Grid, адаптивный дизайн и современные CSS-техники.",
+    "icon": "Code2",
+    "articleCount": 3
+  },
+  {
+    "slug": "javascript",
+    "title": "JavaScript",
+    "description": "Язык программирования для веба. Переменные, функции, объекты, асинхронность, DOM API и ES6+ возможности.",
+    "icon": "FileCode",
+    "articleCount": 3
+  },
+  {
+    "slug": "typescript",
+    "title": "TypeScript",
+    "description": "Типизированный JavaScript. Интерфейсы, дженерики, утилитарные типы и строгая типизация для надёжного кода.",
+    "icon": "ShieldCheck",
+    "articleCount": 3
+  },
+  {
+    "slug": "react",
+    "title": "React",
+    "description": "Библиотека для построения пользовательских интерфейсов. Компоненты, хуки, состояние и жизненный цикл.",
+    "icon": "Atom",
+    "articleCount": 3
+  },
+  {
+    "slug": "nextjs",
+    "title": "Next.js",
+    "description": "Фреймворк на основе React. Серверный рендеринг, маршрутизация, App Router и оптимизация производительности.",
+    "icon": "Globe",
+    "articleCount": 3
+  },
+  {
+    "slug": "tooling",
+    "title": "Инструменты разработки",
+    "description": "Git, ESLint, Prettier, Webpack, Vite и другие инструменты для продуктивной frontend-разработки.",
+    "icon": "Wrench",
+    "articleCount": 3
+  },
+  {
+    "slug": "qa",
+    "title": "Тестирование (QA)",
+    "description": "Основы тестирования веб-приложений. Юнит-тесты, интеграционное и E2E-тестирование, инструменты и лучшие практики.",
+    "icon": "FlaskConical",
+    "articleCount": 3
+  }
+]

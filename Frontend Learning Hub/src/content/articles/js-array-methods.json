@@ -1,0 +1,14 @@
+{
+  "slug": "js-array-methods",
+  "title": "Методы массивов: map, filter, reduce и другие",
+  "description": "Обзор ключевых методов массивов в JavaScript с примерами. Функциональный подход к работе с данными.",
+  "topicSlug": "javascript",
+  "date": "2026-02-05",
+  "readTime": "7 мин",
+  "tags": [
+    "JavaScript",
+    "Массивы",
+    "Функциональное программирование"
+  ],
+  "content": "\n## Работа с массивами в JavaScript\n\nМассивы — одна из самых используемых структур данных. Знание методов массивов — обязательный навык.\n\n### map — преобразование\n\n```javascript\nconst numbers = [1, 2, 3, 4, 5];\nconst doubled = numbers.map(n => n * 2);\n// [2, 4, 6, 8, 10]\n\nconst users = [{ name: \"Анна\" }, { name: \"Борис\" }];\nconst names = users.map(u => u.name);\n// [\"Анна\", \"Борис\"]\n```\n\n### filter — фильтрация\n\n```javascript\nconst numbers = [1, 2, 3, 4, 5, 6];\nconst even = numbers.filter(n => n % 2 === 0);\n// [2, 4, 6]\n\nconst adults = users.filter(u => u.age >= 18);\n```\n\n### reduce — свёртка\n\n```javascript\nconst numbers = [1, 2, 3, 4, 5];\nconst sum = numbers.reduce((acc, n) => acc + n, 0);\n// 15\n\n// Группировка\nconst items = [\n  { type: \"fruit\", name: \"Яблоко\" },\n  { type: \"vegetable\", name: \"Морковь\" },\n  { type: \"fruit\", name: \"Банан\" },\n];\n\nconst grouped = items.reduce((acc, item) => {\n  acc[item.type] = acc[item.type] || [];\n  acc[item.type].push(item);\n  return acc;\n}, {});\n```\n\n### find и findIndex\n\n```javascript\nconst user = users.find(u => u.id === 42);\nconst index = users.findIndex(u => u.id === 42);\n```\n\n### some и every\n\n```javascript\nconst hasAdmin = users.some(u => u.role === \"admin\");\nconst allActive = users.every(u => u.active);\n```\n\n### Цепочки методов\n\n```javascript\nconst result = orders\n  .filter(o => o.status === \"completed\")\n  .map(o => o.total)\n  .reduce((sum, total) => sum + total, 0);\n```\n\nФункциональные методы массивов делают код чище и выразительнее.\n    "
+}

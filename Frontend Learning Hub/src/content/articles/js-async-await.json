@@ -1,0 +1,14 @@
+{
+  "slug": "js-async-await",
+  "title": "Асинхронный JavaScript: Promises и async/await",
+  "description": "Глубокое погружение в асинхронное программирование: колбэки, Promise, async/await и обработка ошибок.",
+  "topicSlug": "javascript",
+  "date": "2026-01-25",
+  "readTime": "10 мин",
+  "tags": [
+    "JavaScript",
+    "Async",
+    "Promises"
+  ],
+  "content": "\n## Асинхронность в JavaScript\n\nJavaScript — однопоточный язык, но он может выполнять асинхронные операции благодаря **Event Loop**.\n\n### Колбэки (старый подход)\n\n```javascript\nfunction fetchData(callback) {\n  setTimeout(() => {\n    callback(null, { id: 1, name: \"Data\" });\n  }, 1000);\n}\n\nfetchData((error, data) => {\n  if (error) console.error(error);\n  else console.log(data);\n});\n```\n\n### Promise (современный подход)\n\n```javascript\nconst fetchData = () => {\n  return new Promise((resolve, reject) => {\n    setTimeout(() => {\n      resolve({ id: 1, name: \"Data\" });\n    }, 1000);\n  });\n};\n\nfetchData()\n  .then(data => console.log(data))\n  .catch(error => console.error(error))\n  .finally(() => console.log(\"Done\"));\n```\n\n### async/await (самый удобный)\n\n```javascript\nasync function loadData() {\n  try {\n    const response = await fetch(\"/api/data\");\n    const data = await response.json();\n    console.log(data);\n  } catch (error) {\n    console.error(\"Ошибка:\", error);\n  }\n}\n```\n\n### Параллельное выполнение\n\n```javascript\n// Последовательно (медленно)\nconst a = await fetchA();\nconst b = await fetchB();\n\n// Параллельно (быстро)\nconst [a, b] = await Promise.all([fetchA(), fetchB()]);\n```\n\n### Promise.allSettled\n\n```javascript\nconst results = await Promise.allSettled([\n  fetch(\"/api/users\"),\n  fetch(\"/api/posts\"),\n]);\n\nresults.forEach(result => {\n  if (result.status === \"fulfilled\") console.log(result.value);\n  else console.error(result.reason);\n});\n```\n\nasync/await делает асинхронный код таким же читаемым, как синхронный.\n    "
+}

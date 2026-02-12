@@ -1,0 +1,14 @@
+{
+  "slug": "nextjs-app-router",
+  "title": "Next.js App Router: новая маршрутизация",
+  "description": "Обзор App Router в Next.js: файловая маршрутизация, layouts, loading и error состояния.",
+  "topicSlug": "nextjs",
+  "date": "2026-01-22",
+  "readTime": "9 мин",
+  "tags": [
+    "Next.js",
+    "App Router",
+    "Маршрутизация"
+  ],
+  "content": "\n## App Router в Next.js\n\nApp Router — это новая система маршрутизации в Next.js, основанная на файловой структуре в папке `app/`.\n\n### Файловая маршрутизация\n\n```\napp/\n├── page.tsx          → /\n├── about/\n│   └── page.tsx      → /about\n├── topics/\n│   ├── page.tsx      → /topics\n│   └── [slug]/\n│       └── page.tsx  → /topics/html-css\n└── layout.tsx        → общий layout\n```\n\n### Layout\n\nLayout оборачивает страницы и сохраняет состояние при навигации:\n\n```tsx\n// app/layout.tsx\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode;\n}) {\n  return (\n    <html lang=\"ru\">\n      <body>\n        <Header />\n        <main>{children}</main>\n        <Footer />\n      </body>\n    </html>\n  );\n}\n```\n\n### Loading UI\n\n```tsx\n// app/topics/loading.tsx\nexport default function Loading() {\n  return <div>Загрузка тем...</div>;\n}\n```\n\n### Error Handling\n\n```tsx\n// app/topics/error.tsx\n\"use client\";\n\nexport default function Error({\n  error,\n  reset,\n}: {\n  error: Error;\n  reset: () => void;\n}) {\n  return (\n    <div>\n      <h2>Что-то пошло не так!</h2>\n      <button onClick={reset}>Попробовать снова</button>\n    </div>\n  );\n}\n```\n\n### Динамические маршруты\n\n```tsx\n// app/topics/[slug]/page.tsx\nexport default function TopicPage({\n  params,\n}: {\n  params: { slug: string };\n}) {\n  return <h1>Тема: {params.slug}</h1>;\n}\n```\n\n### Metadata\n\n```tsx\nexport const metadata = {\n  title: \"Frontend Learning Hub\",\n  description: \"Учебный сайт по frontend-разработке\",\n};\n```\n\nApp Router делает Next.js мощнее и удобнее для построения сложных приложений.\n    "
+}

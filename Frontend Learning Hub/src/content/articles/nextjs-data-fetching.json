@@ -1,0 +1,14 @@
+{
+  "slug": "nextjs-data-fetching",
+  "title": "Получение данных в Next.js",
+  "description": "Стратегии получения данных: fetch в Server Components, кэширование, ISR и динамические данные.",
+  "topicSlug": "nextjs",
+  "date": "2026-02-09",
+  "readTime": "7 мин",
+  "tags": [
+    "Next.js",
+    "Data Fetching",
+    "Кэширование"
+  ],
+  "content": "\n## Получение данных в Next.js\n\nNext.js предлагает несколько стратегий получения данных, каждая со своими преимуществами.\n\n### Fetch в Server Components\n\n```tsx\nasync function PostsPage() {\n  const res = await fetch(\"https://api.example.com/posts\");\n  const posts = await res.json();\n\n  return (\n    <ul>\n      {posts.map((post: Post) => (\n        <li key={post.id}>{post.title}</li>\n      ))}\n    </ul>\n  );\n}\n```\n\n### Кэширование\n\n```tsx\n// Кэшируется по умолчанию (static)\nconst res = await fetch(\"https://api.example.com/posts\");\n\n// Без кэширования (dynamic)\nconst res = await fetch(\"https://api.example.com/posts\", {\n  cache: \"no-store\",\n});\n\n// Ревалидация по времени (ISR)\nconst res = await fetch(\"https://api.example.com/posts\", {\n  next: { revalidate: 3600 }, // 1 час\n});\n```\n\n### Параллельная загрузка\n\n```tsx\nasync function Dashboard() {\n  // Параллельно загружаем данные\n  const [users, posts, stats] = await Promise.all([\n    getUsers(),\n    getPosts(),\n    getStats(),\n  ]);\n\n  return (\n    <div>\n      <UsersList users={users} />\n      <PostsList posts={posts} />\n      <StatsCard stats={stats} />\n    </div>\n  );\n}\n```\n\n### generateStaticParams\n\nДля статической генерации динамических маршрутов:\n\n```tsx\nexport async function generateStaticParams() {\n  const posts = await getPosts();\n\n  return posts.map(post => ({\n    slug: post.slug,\n  }));\n}\n```\n\n### Server Actions\n\n```tsx\nasync function createPost(formData: FormData) {\n  \"use server\";\n\n  const title = formData.get(\"title\");\n  const content = formData.get(\"content\");\n  // сохранить в БД\n}\n```\n\nПравильная стратегия получения данных обеспечивает и производительность, и актуальность контента.\n    "
+}
